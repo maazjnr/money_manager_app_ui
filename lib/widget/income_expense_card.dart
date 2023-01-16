@@ -9,6 +9,7 @@ class ExpenseData {
   const ExpenseData(this.label, this.amount, this.icon);
 }
 
+
 class IncomeExpenseCard extends StatelessWidget {
   final ExpenseData expenseData;
 
@@ -41,7 +42,7 @@ class IncomeExpenseCard extends StatelessWidget {
                       color: Colors.white, fontWeight: FontWeight.w800),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(top:  defaultSpacing / 3),
+                  padding: const EdgeInsets.only(top: defaultSpacing / 3),
                   child: Text(
                     expenseData.amount,
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
@@ -51,7 +52,10 @@ class IncomeExpenseCard extends StatelessWidget {
               ],
             ),
           ),
-          Icon(expenseData.icon, color: Colors.white,)
+          Icon(
+            expenseData.icon,
+            color: Colors.white,
+          )
         ],
       ),
     );
