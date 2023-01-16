@@ -11,7 +11,8 @@ class MainScreenHost extends StatefulWidget {
 }
 
 class _MainScreenHostState extends State<MainScreenHost> {
-  var currentIndex = 0;
+
+  int currentIndex = 0;
 
   Widget buildTabContent(int index) {
     switch (index) {
@@ -19,7 +20,6 @@ class _MainScreenHostState extends State<MainScreenHost> {
         return const HomeScreenTab();
       case 1:
         return Container();
-
       case 2:
         return Container();
       case 3:
@@ -28,8 +28,6 @@ class _MainScreenHostState extends State<MainScreenHost> {
         return const HomeScreenTab();
     }
   }
-
-
 
   @override
   Widget build(BuildContext context) {
