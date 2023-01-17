@@ -3,7 +3,6 @@ import 'package:money_manager_app/utils/constants.dart';
 import '../data/userInfo.dart';
 
 class TransactionItemTitle extends StatelessWidget {
-  
   const TransactionItemTitle({super.key, required this.transaction});
 
   final Transaction transaction;
@@ -16,7 +15,7 @@ class TransactionItemTitle extends StatelessWidget {
           color: Colors.black12,
           offset: Offset.zero,
           blurRadius: 10,
-          spreadRadius: 4,
+          spreadRadius: 2,
         )
       ]),
       child: ListTile(
@@ -26,17 +25,22 @@ class TransactionItemTitle extends StatelessWidget {
               color: Colors.red,
               borderRadius:
                   BorderRadius.all(Radius.circular(defaultSpacing / 2))),
-          child: const Icon(Icons.access_time_filled_sharp),
+          child: transaction.categoryType == ItemCategoryType.fashion
+              ? const Icon(
+                  Icons.supervised_user_circle_sharp,
+                  color: Colors.white,
+                )
+              : const Icon(Icons.house),
         ),
         title: Text(
-          'Shoes',
+          transaction.itemCategoryName,
           style: Theme.of(context).textTheme.bodyText1?.copyWith(
               fontSize: fontSizeTitle,
               color: Colors.black,
               fontWeight: FontWeight.w700),
         ),
         subtitle: Text(
-          'Sneaker Nike',
+          transaction.itemName,
           style: Theme.of(context).textTheme.bodyText1?.copyWith(
               fontSize: fontSizeBody,
               color: Colors.grey,
@@ -47,14 +51,15 @@ class TransactionItemTitle extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             Text(
-              '-\$140.00',
-              style: Theme.of(context)
-                  .textTheme
-                  .bodyText1
-                  ?.copyWith(fontSize: fontSizeTitle, color: Colors.black),
+              transaction.amount,
+              style: Theme.of(context).textTheme.bodyText1?.copyWith(
+                  fontSize: fontSizeTitle,
+                  color: transaction.transactionType == TransactionType.outflow
+                      ? Colors.red
+                      : Colors.black),
             ),
             Text(
-              'Jan 23',
+              transaction.date,
               style: Theme.of(context)
                   .textTheme
                   .bodyText1

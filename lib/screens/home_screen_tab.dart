@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:money_manager_app/data/userInfo.dart';
 import 'package:money_manager_app/widget/income_expense_card.dart';
 import 'package:money_manager_app/widget/transaction_item_title.dart';
 import '../utils/constants.dart';
@@ -15,7 +16,7 @@ class HomeScreenTab extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(
-              height: defaultSpacing * 4,
+              height: defaultSpacing * 2,
             ),
             ListTile(
               leading: ClipRRect(
@@ -25,7 +26,7 @@ class HomeScreenTab extends StatelessWidget {
                   'assets/images/avatar.jpeg',
                 ),
               ),
-              title: const Text('Hey! Jacob !'),
+              title:  Text(' Hey! ${userData.name}!'),
               trailing: Image.asset('assets/icons/bell.png'),
             ),
             const SizedBox(
@@ -35,7 +36,7 @@ class HomeScreenTab extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    '\$4,586,00',
+                    '${userData.totalBalance} ',
                     style: Theme.of(context).textTheme.titleLarge?.copyWith(
                         fontSize: defaultSpacing * 1.5,
                         fontWeight: FontWeight.w800),
@@ -58,20 +59,20 @@ class HomeScreenTab extends StatelessWidget {
             ),
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
-              children: const [
+              children: [
                 Expanded(
                   child: IncomeExpenseCard(
                     expenseData: ExpenseData(
-                        'Income', '\$2,400.00', Icons.arrow_upward_rounded),
+                        'Income', '\$${userData.inflow} ', Icons.arrow_upward_rounded),
                   ),
                 ),
-                SizedBox(
-                  width: defaultSpacing,
+             const   SizedBox(
+                  width: defaultSpacing ,
                 ),
-                Expanded(
+               Expanded(
                   child: IncomeExpenseCard(
                     expenseData: ExpenseData(
-                        'Expense', '-\$710.00', Icons.arrow_downward_rounded),
+                        'Expense', '-\$${userData.outflow} ', Icons.arrow_downward_rounded),
                   ),
                 ),
               ],
@@ -96,7 +97,8 @@ class HomeScreenTab extends StatelessWidget {
             const SizedBox(
               height: defaultSpacing,
             ),
-            const TransactionItemTitle()
+
+            ...userData.transaction.map((transaction) => TransactionItemTitle(transaction: transaction) )
           ],
         ),
       ),

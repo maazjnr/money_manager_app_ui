@@ -46,8 +46,8 @@ const List<Transaction> transaction2 = [
 
 const userData = UserInfo(
   name: "Jacob",
-  totalBalance: '\$4,586',
-  inflow: '\$4,000.00',
-  outflow: '\$2000,00',
+  totalBalance: '\$14,586.00',
+  inflow: '\4,000.00',
+  outflow: '\2000,00',
   transaction: transaction1,
 );
