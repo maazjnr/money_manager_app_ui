@@ -18,11 +18,14 @@ class IncomeExpenseCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return Container(
       height: 80,
       padding: const EdgeInsets.all(defaultSpacing),
       decoration: BoxDecoration(
+        boxShadow: const [BoxShadow(color: Colors.black12,
+        blurRadius: 12, offset: Offset.zero,
+        spreadRadius: 12
+        )],
         color: expenseData.label == 'Income' ? primaryDark : accent,
         borderRadius: const BorderRadius.all(
           Radius.circular(defaultSpacing),

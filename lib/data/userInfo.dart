@@ -39,9 +39,12 @@ const List<Transaction> transaction1 = [
 const List<Transaction> transaction2 = [
   Transaction(ItemCategoryType.payments, TransactionType.inflow, 'Payments',
       'Transfer from Eden', "\$13.500.00", "Nov 8"),
-
-  Transaction(ItemCategoryType.grocery, TransactionType.outflow, 'Food',
-      'Chicken', "\$8.300.00", "Dec 23")
+  Transaction(ItemCategoryType.grocery, TransactionType.inflow, 'Food',
+      'Chicken Wings', "\$1,500.00", "Feb 11"),
+  Transaction(ItemCategoryType.grocery, TransactionType.outflow, 'Rent',
+      'Transfer from Eden', "\$800.00", "June 6"),
+        Transaction(ItemCategoryType.grocery, TransactionType.outflow, 'Shopping',
+      'Luiz Vuitton suit', "\$10,00.00", "June 6"),
 ];
 
 const userData = UserInfo(

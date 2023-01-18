@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:money_manager_app/data/userInfo.dart';
 import 'package:money_manager_app/widget/income_expense_card.dart';
 import 'package:money_manager_app/widget/transaction_item_title.dart';
+import '../data/userInfo.dart';
 import '../utils/constants.dart';
 
 class HomeScreenTab extends StatelessWidget {
@@ -26,7 +27,7 @@ class HomeScreenTab extends StatelessWidget {
                   'assets/images/avatar.jpeg',
                 ),
               ),
-              title:  Text(' Hey! ${userData.name}!'),
+              title: Text(' Hey! ${userData.name}!'),
               trailing: Image.asset('assets/icons/bell.png'),
             ),
             const SizedBox(
@@ -62,17 +63,19 @@ class HomeScreenTab extends StatelessWidget {
               children: [
                 Expanded(
                   child: IncomeExpenseCard(
-                    expenseData: ExpenseData(
-                        'Income', '\$${userData.inflow} ', Icons.arrow_upward_rounded),
+                    expenseData: ExpenseData('Income', '\$${userData.inflow} ',
+                        Icons.arrow_upward_rounded),
                   ),
                 ),
-             const   SizedBox(
-                  width: defaultSpacing ,
+                const SizedBox(
+                  width: defaultSpacing,
                 ),
-               Expanded(
+                Expanded(
                   child: IncomeExpenseCard(
                     expenseData: ExpenseData(
-                        'Expense', '-\$${userData.outflow} ', Icons.arrow_downward_rounded),
+                        'Expense',
+                        '-\$${userData.outflow} ',
+                        Icons.arrow_downward_rounded),
                   ),
                 ),
               ],
@@ -91,14 +94,20 @@ class HomeScreenTab extends StatelessWidget {
               height: defaultSpacing * 1.5,
             ),
             const Text(
-              'Today',
+              'Yesterday',
               style: TextStyle(color: Colors.grey),
             ),
             const SizedBox(
               height: defaultSpacing,
             ),
+            ...userData.transaction.map((transaction) =>
+                TransactionItemTitle(transaction: transaction)),
+            const SizedBox(
+              height: defaultSpacing,
+            ),
 
-            ...userData.transaction.map((transaction) => TransactionItemTitle(transaction: transaction) )
+                        ...transaction2.map((transaction) =>
+                TransactionItemTitle(transaction: transaction)),
           ],
         ),
       ),
