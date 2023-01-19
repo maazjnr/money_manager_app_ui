@@ -8,7 +8,6 @@ class TransactionItemTitle extends StatelessWidget {
   const TransactionItemTitle({super.key, required this.transaction});
 
   final Transaction transaction;
-
       // ignore: unused_element
     String getSign(TransactionType type) {
       switch (type) {
