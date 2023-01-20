@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:money_manager_app/utils/constants.dart';
 
+import '../widget/profileAccountInfoTile.dart';
+
 class HomeProfileTab extends StatefulWidget {
   const HomeProfileTab({super.key});
 
@@ -49,7 +51,7 @@ class _HomeProfileTabState extends State<HomeProfileTab> {
                             Radius.circular(defaultSpacing)),
                         child: Image.asset(
                           'assets/images/avatar.jpeg',
-                          width: 100,
+                          width: 120,
                         ),
                       ),
                       const SizedBox(
@@ -78,58 +80,74 @@ class _HomeProfileTabState extends State<HomeProfileTab> {
               Expanded(
                 flex: 2,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    const SizedBox(
+                      height: defaultSpacing,
+                    ),
                     Text(
                       'General',
                       style: Theme.of(context).textTheme.subtitle1?.copyWith(
-                          fontWeight: FontWeight.w700, color: Colors.black),
+                          fontWeight: FontWeight.w700,
+                          color: Colors.black,
+                          fontSize: defaultSpacing * 1.2),
                     ),
-                    const ProfileAccountInfoTile(
+                    const SizedBox(
+                      height: defaultSpacing / 2,
+                    ),
+                    const ProfileGeneralInfoTile(
                         title: 'Bank Location',
                         subTitle: '7307 Grand Avenue, Flushing NYC3293',
-                        imageUrl: 'assets/icons/location-1.png')
+                        imageUrl: 'assets/icons/location-1.png'),
+                    const ProfileGeneralInfoTile(
+                        title: 'My Wallet',
+                        subTitle: 'Manage you saved wallet',
+                        imageUrl: 'assets/icons/wallet.png'),
+
+                    const SizedBox(
+                      height: defaultSpacing * 1.5,
+                    ),
+                    Text(
+                      'Account',
+                      style: Theme.of(context).textTheme.subtitle1?.copyWith(
+                          fontWeight: FontWeight.w700,
+                          color: Colors.black,
+                          fontSize: defaultSpacing * 1.2),
+                    ),
+
+                    //TODO build account widgets
+
+                    const SizedBox(
+                      height: defaultSpacing * 2,
+                    ),
+
+                    const ProfileAccountInfoTile(
+                        iconUrl: 'assets/icons/user-1.png',
+                        heading: 'My Account'),
+                    const SizedBox(
+                      height: defaultSpacing,
+                    ),
+                    const ProfileAccountInfoTile(
+                        iconUrl: 'assets/icons/bell.png',
+                        heading: 'Notification'),
+                    const SizedBox(
+                      height: defaultSpacing,
+                    ),
+                    const ProfileAccountInfoTile(
+                        iconUrl: 'assets/icons/lock-on.png',
+                        heading: 'Privacy'),
+                    const SizedBox(
+                      height: defaultSpacing,
+                    ),
+                    const ProfileAccountInfoTile(
+                        iconUrl: 'assets/icons/info-circle.png',
+                        heading: 'About'),
                   ],
                 ),
               )
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class ProfileAccountInfoTile extends StatelessWidget {
-  final String title;
-  final String subTitle;
-  final String imageUrl;
-
-  const ProfileAccountInfoTile(
-      {super.key,
-      required this.title,
-      required this.subTitle,
-      required this.imageUrl});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: ListTile(
-        leading: Image.asset(imageUrl),
-        title: Text(
-          title,
-          style: Theme.of(context)
-              .textTheme
-              .subtitle2
-              ?.copyWith(color: Colors.black),
-        ),
-        subtitle: Text(
-          subTitle,
-          style: Theme.of(context)
-              .textTheme
-              .subtitle2
-              ?.copyWith(color: Colors.grey),
-        ),
-        trailing: const Icon(Icons.keyboard_arrow_right),
       ),
     );
   }
